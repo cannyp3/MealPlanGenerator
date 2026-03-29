@@ -9,70 +9,128 @@
         .container { max-width: 600px; margin: auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
         h1 { text-align: center; color: #2c3e50; margin-bottom: 5px; }
         .subtitle { text-align: center; color: #7f8c8d; margin-bottom: 30px; font-size: 0.9em; }
+        .weather-table { width: 100%; border-collapse: collapse; margin-bottom: 30px; background: #fff; border-radius: 8px; overflow: hidden; font-size: 0.9em; }
+        .weather-table th, .weather-table td { padding: 10px; text-align: left; border-bottom: 1px solid #edf2f7; }
+        .weather-table th { background-color: #f8fafc; color: #4a5568; font-weight: 600; }
         .option { margin-bottom: 40px; padding: 25px; border: 1px solid #edf2f7; border-radius: 12px; background-color: #fff; }
         .option h2 { margin-top: 0; color: #3498db; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; margin-bottom: 20px; }
         .day { margin-bottom: 12px; font-size: 1.1em; }
         .day b { color: #2d3748; }
-        .weather-info { font-size: 0.85em; color: #718096; margin-left: 10px; }
         @media (max-width: 480px) {
             .container { padding: 15px; }
             .day b { display: block; margin-bottom: 2px; }
+            .weather-table { font-size: 0.8em; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Dinner Menu</h1>
-        <p class="subtitle">Generated on March 28, 2026</p>
+        <p class="subtitle">Generated on March 29, 2026</p>
+        
+        <table class="weather-table">
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>High</th>
+                    <th>Forecast</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td>Saturday</td>
+                    <td>39.7°F</td>
+                    <td>Rainy</td>
+                </tr>
+
+                <tr>
+                    <td>Sunday</td>
+                    <td>56.1°F</td>
+                    <td>Rainy</td>
+                </tr>
+
+                <tr>
+                    <td>Monday</td>
+                    <td>50.5°F</td>
+                    <td>Mostly Sunny</td>
+                </tr>
+
+                <tr>
+                    <td>Tuesday</td>
+                    <td>56.0°F</td>
+                    <td>Foggy</td>
+                </tr>
+
+                <tr>
+                    <td>Wednesday</td>
+                    <td>41.0°F</td>
+                    <td>Mostly Sunny</td>
+                </tr>
+
+                <tr>
+                    <td>Thursday</td>
+                    <td>45.8°F</td>
+                    <td>Mostly Sunny</td>
+                </tr>
+
+                <tr>
+                    <td>Friday</td>
+                    <td>70.7°F</td>
+                    <td>Mostly Sunny</td>
+                </tr>
+
+            </tbody>
+        </table>
 
         <div class="option">
             <h2>Option 1</h2>
 
             <div class="day">
-                <b>Saturday</b>: Sausage Skillet Meal
+                <b>Saturday</b>: Leftovers
             </div>
 
             <div class="day">
-                <b>Sunday</b>: Premade Meal / Takeout
+                <b>Sunday</b>: Pizza
             </div>
 
             <div class="day">
-                <b>Monday</b>: Leftovers
+                <b>Monday</b>: Chicken Tacos
             </div>
 
             <div class="day">
-                <b>Tuesday</b>: Fish Stick Tacos
+                <b>Tuesday</b>: Premade Meal / Takeout
             </div>
 
             <div class="day">
-                <b>Wednesday</b>: BLT Sandwiches
+                <b>Wednesday</b>: Pulled Pork
             </div>
 
             <div class="day">
-                <b>Thursday</b>: Baked Chicken
+                <b>Thursday</b>: Grilled Fish
             </div>
 
             <div class="day">
-                <b>Friday</b>: Pizza
+                <b>Friday</b>: Sausage Skillet Meal
             </div>
         </div>
         <div class="option">
             <h2>Option 2</h2>
 
             <div class="day">
-                <b>Saturday</b>: Fish Stick Tacos
+                <b>Saturday</b>: Leftovers
             </div>
 
             <div class="day">
-                <b>Sunday</b>: Beef Tacos
+                <b>Sunday</b>: Pulled Pork Burritos
             </div>
 
             <div class="day">
-                <b>Monday</b>: Rib Burritos
+                <b>Monday</b>: Pizza
             </div>
 
             <div class="day">
-                <b>Tuesday</b>: Pizza
+                <b>Tuesday</b>: Rib Burritos
             </div>
 
             <div class="day">
@@ -80,7 +138,7 @@
             </div>
 
             <div class="day">
-                <b>Thursday</b>: Leftovers
+                <b>Thursday</b>: Grilled Fish
             </div>
 
             <div class="day">
@@ -91,31 +149,31 @@
             <h2>Option 3</h2>
 
             <div class="day">
-                <b>Saturday</b>: Rib Burritos
+                <b>Saturday</b>: Premade Meal / Takeout
             </div>
 
             <div class="day">
-                <b>Sunday</b>: Pulled Chicken Burritos
+                <b>Sunday</b>: Baked Chicken
             </div>
 
             <div class="day">
-                <b>Monday</b>: Premade Meal / Takeout
+                <b>Monday</b>: Leftovers
             </div>
 
             <div class="day">
-                <b>Tuesday</b>: Beef Tacos
+                <b>Tuesday</b>: Pulled Pork Burritos
             </div>
 
             <div class="day">
-                <b>Wednesday</b>: Pizza
+                <b>Wednesday</b>: Breakfast for Dinner
             </div>
 
             <div class="day">
-                <b>Thursday</b>: Chicken Tacos
+                <b>Thursday</b>: Pizza
             </div>
 
             <div class="day">
-                <b>Friday</b>: Leftovers
+                <b>Friday</b>: Fish Stick Tacos
             </div>
         </div>
     <p style="text-align: center; font-size: 0.8em; color: #a0aec0;">&copy; Meal Plan Generator</p>

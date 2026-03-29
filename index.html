@@ -2,181 +2,246 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Weekly Meal Plan</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 20px; line-height: 1.6; background-color: #fafafa; color: #333; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 20px; line-height: 1.6; background-color: #fafafa; color: #1a202c; }
         .container { max-width: 600px; margin: auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-        h1 { text-align: center; color: #2c3e50; margin-bottom: 5px; }
-        .subtitle { text-align: center; color: #7f8c8d; margin-bottom: 30px; font-size: 0.9em; }
-        .weather-table { width: 100%; border-collapse: collapse; margin-bottom: 30px; background: #fff; border-radius: 8px; overflow: hidden; font-size: 0.9em; }
-        .weather-table th, .weather-table td { padding: 10px; text-align: left; border-bottom: 1px solid #edf2f7; }
-        .weather-table th { background-color: #f8fafc; color: #4a5568; font-weight: 600; }
-        .option { margin-bottom: 40px; padding: 25px; border: 1px solid #edf2f7; border-radius: 12px; background-color: #fff; }
-        .option h2 { margin-top: 0; color: #3498db; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; margin-bottom: 20px; }
-        .day { margin-bottom: 12px; font-size: 1.1em; }
-        .day b { color: #2d3748; }
+        h1 { text-align: center; color: #2d3748; margin-bottom: 5px; }
+        .subtitle { text-align: center; color: #4a5568; margin-bottom: 30px; font-size: 1em; }
+        .weather-table { width: 100%; border-collapse: collapse; margin-bottom: 30px; background: #fff; border-radius: 8px; overflow: hidden; }
+        .weather-table th, .weather-table td { padding: 12px; text-align: left; border-bottom: 1px solid #edf2f7; }
+        .weather-table th { background-color: #f7fafc; color: #2d3748; font-weight: 700; border-bottom: 2px solid #e2e8f0; }
+        .option { margin-bottom: 40px; padding: 25px; border: 2px solid #edf2f7; border-radius: 12px; background-color: #fff; }
+        .option h2 { margin-top: 0; color: #2b6cb0; border-bottom: 2px solid #ebf8ff; padding-bottom: 10px; margin-bottom: 20px; }
+        .meal-list { list-style: none; padding: 0; margin: 0; }
+        .meal-item { margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px dashed #edf2f7; font-size: 1.1em; }
+        .meal-item:last-child { border-bottom: none; }
+        .day-name { color: #2d3748; font-weight: 700; display: inline-block; min-width: 100px; }
+        .protein-tag { font-size: 0.8em; color: #4a5568; background: #edf2f7; padding: 2px 8px; border-radius: 4px; margin-left: 10px; vertical-align: middle; }
         @media (max-width: 480px) {
             .container { padding: 15px; }
-            .day b { display: block; margin-bottom: 2px; }
-            .weather-table { font-size: 0.8em; }
+            .day-name { display: block; margin-bottom: 4px; }
+            .protein-tag { margin-left: 0; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Dinner Menu</h1>
-        <p class="subtitle">Generated on March 29, 2026</p>
+    <main class="container">
+        <header>
+            <h1>Dinner Menu</h1>
+            <p class="subtitle">Weekly Plan for April 04 – 10, 2026</p>
+        </header>
         
-        <table class="weather-table">
-            <thead>
-                <tr>
-                    <th>Day</th>
-                    <th>High</th>
-                    <th>Forecast</th>
-                </tr>
-            </thead>
-            <tbody>
+        <section aria-labelledby="weather-heading">
+            <h2 id="weather-heading" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0;">Weekly Weather Forecast</h2>
+            <table class="weather-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Day</th>
+                        <th scope="col">High</th>
+                        <th scope="col">Forecast</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-                <tr>
-                    <td>Saturday</td>
-                    <td>39.7°F</td>
-                    <td>Rainy</td>
-                </tr>
+                    <tr>
+                        <th scope="row">Saturday</th>
+                        <td>39.7°F</td>
+                        <td>Rainy</td>
+                    </tr>
 
-                <tr>
-                    <td>Sunday</td>
-                    <td>56.1°F</td>
-                    <td>Rainy</td>
-                </tr>
+                    <tr>
+                        <th scope="row">Sunday</th>
+                        <td>56.1°F</td>
+                        <td>Rainy</td>
+                    </tr>
 
-                <tr>
-                    <td>Monday</td>
-                    <td>50.5°F</td>
-                    <td>Mostly Sunny</td>
-                </tr>
+                    <tr>
+                        <th scope="row">Monday</th>
+                        <td>50.5°F</td>
+                        <td>Mostly Sunny</td>
+                    </tr>
 
-                <tr>
-                    <td>Tuesday</td>
-                    <td>56.0°F</td>
-                    <td>Foggy</td>
-                </tr>
+                    <tr>
+                        <th scope="row">Tuesday</th>
+                        <td>56.0°F</td>
+                        <td>Foggy</td>
+                    </tr>
 
-                <tr>
-                    <td>Wednesday</td>
-                    <td>41.0°F</td>
-                    <td>Mostly Sunny</td>
-                </tr>
+                    <tr>
+                        <th scope="row">Wednesday</th>
+                        <td>41.0°F</td>
+                        <td>Mostly Sunny</td>
+                    </tr>
 
-                <tr>
-                    <td>Thursday</td>
-                    <td>45.8°F</td>
-                    <td>Mostly Sunny</td>
-                </tr>
+                    <tr>
+                        <th scope="row">Thursday</th>
+                        <td>45.8°F</td>
+                        <td>Mostly Sunny</td>
+                    </tr>
 
-                <tr>
-                    <td>Friday</td>
-                    <td>70.7°F</td>
-                    <td>Mostly Sunny</td>
-                </tr>
+                    <tr>
+                        <th scope="row">Friday</th>
+                        <td>70.7°F</td>
+                        <td>Mostly Sunny</td>
+                    </tr>
 
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </section>
 
-        <div class="option">
-            <h2>Option 1</h2>
+        <section aria-label="Meal Plan Options">
 
-            <div class="day">
-                <b>Saturday</b>: Leftovers
-            </div>
+            <article class="option">
+                <h2>Option 1</h2>
+                <ul class="meal-list">
 
-            <div class="day">
-                <b>Sunday</b>: Pizza
-            </div>
+                    <li class="meal-item">
+                        <span class="day-name">Saturday:</span> 
+                        <span>Pizza</span>
+                        
+                    </li>
 
-            <div class="day">
-                <b>Monday</b>: Chicken Tacos
-            </div>
+                    <li class="meal-item">
+                        <span class="day-name">Sunday:</span> 
+                        <span>Pork Stir Fry</span>
+                        <span class="protein-tag" aria-label="Protein: Pork">Pork</span>
+                    </li>
 
-            <div class="day">
-                <b>Tuesday</b>: Premade Meal / Takeout
-            </div>
+                    <li class="meal-item">
+                        <span class="day-name">Monday:</span> 
+                        <span>Premade Meal / Takeout</span>
+                        
+                    </li>
 
-            <div class="day">
-                <b>Wednesday</b>: Pulled Pork
-            </div>
+                    <li class="meal-item">
+                        <span class="day-name">Tuesday:</span> 
+                        <span>Fish Stick Tacos</span>
+                        <span class="protein-tag" aria-label="Protein: Fish">Fish</span>
+                    </li>
 
-            <div class="day">
-                <b>Thursday</b>: Grilled Fish
-            </div>
+                    <li class="meal-item">
+                        <span class="day-name">Wednesday:</span> 
+                        <span>Rib Burritos</span>
+                        <span class="protein-tag" aria-label="Protein: Pork">Pork</span>
+                    </li>
 
-            <div class="day">
-                <b>Friday</b>: Sausage Skillet Meal
-            </div>
-        </div>
-        <div class="option">
-            <h2>Option 2</h2>
+                    <li class="meal-item">
+                        <span class="day-name">Thursday:</span> 
+                        <span>Leftovers</span>
+                        
+                    </li>
 
-            <div class="day">
-                <b>Saturday</b>: Leftovers
-            </div>
+                    <li class="meal-item">
+                        <span class="day-name">Friday:</span> 
+                        <span>Grilled Chicken Wings</span>
+                        <span class="protein-tag" aria-label="Protein: Chicken">Chicken</span>
+                    </li>
 
-            <div class="day">
-                <b>Sunday</b>: Pulled Pork Burritos
-            </div>
+                </ul>
+            </article>
+            <article class="option">
+                <h2>Option 2</h2>
+                <ul class="meal-list">
 
-            <div class="day">
-                <b>Monday</b>: Pizza
-            </div>
+                    <li class="meal-item">
+                        <span class="day-name">Saturday:</span> 
+                        <span>Premade Meal / Takeout</span>
+                        
+                    </li>
 
-            <div class="day">
-                <b>Tuesday</b>: Rib Burritos
-            </div>
+                    <li class="meal-item">
+                        <span class="day-name">Sunday:</span> 
+                        <span>Baked Pork Chops</span>
+                        <span class="protein-tag" aria-label="Protein: Pork">Pork</span>
+                    </li>
 
-            <div class="day">
-                <b>Wednesday</b>: Baked Chicken
-            </div>
+                    <li class="meal-item">
+                        <span class="day-name">Monday:</span> 
+                        <span>Chicken Fingers</span>
+                        <span class="protein-tag" aria-label="Protein: Chicken">Chicken</span>
+                    </li>
 
-            <div class="day">
-                <b>Thursday</b>: Grilled Fish
-            </div>
+                    <li class="meal-item">
+                        <span class="day-name">Tuesday:</span> 
+                        <span>Fish Stick Tacos</span>
+                        <span class="protein-tag" aria-label="Protein: Fish">Fish</span>
+                    </li>
 
-            <div class="day">
-                <b>Friday</b>: Premade Meal / Takeout
-            </div>
-        </div>
-        <div class="option">
-            <h2>Option 3</h2>
+                    <li class="meal-item">
+                        <span class="day-name">Wednesday:</span> 
+                        <span>Beef and Broccoli</span>
+                        <span class="protein-tag" aria-label="Protein: Beef">Beef</span>
+                    </li>
 
-            <div class="day">
-                <b>Saturday</b>: Premade Meal / Takeout
-            </div>
+                    <li class="meal-item">
+                        <span class="day-name">Thursday:</span> 
+                        <span>Leftovers</span>
+                        
+                    </li>
 
-            <div class="day">
-                <b>Sunday</b>: Baked Chicken
-            </div>
+                    <li class="meal-item">
+                        <span class="day-name">Friday:</span> 
+                        <span>Pizza</span>
+                        
+                    </li>
 
-            <div class="day">
-                <b>Monday</b>: Leftovers
-            </div>
+                </ul>
+            </article>
+            <article class="option">
+                <h2>Option 3</h2>
+                <ul class="meal-list">
 
-            <div class="day">
-                <b>Tuesday</b>: Pulled Pork Burritos
-            </div>
+                    <li class="meal-item">
+                        <span class="day-name">Saturday:</span> 
+                        <span>Beef Stir Fry</span>
+                        <span class="protein-tag" aria-label="Protein: Beef">Beef</span>
+                    </li>
 
-            <div class="day">
-                <b>Wednesday</b>: Breakfast for Dinner
-            </div>
+                    <li class="meal-item">
+                        <span class="day-name">Sunday:</span> 
+                        <span>Ham and Cheese Sandwiches</span>
+                        <span class="protein-tag" aria-label="Protein: Pork">Pork</span>
+                    </li>
 
-            <div class="day">
-                <b>Thursday</b>: Pizza
-            </div>
+                    <li class="meal-item">
+                        <span class="day-name">Monday:</span> 
+                        <span>Quesadillas</span>
+                        <span class="protein-tag" aria-label="Protein: Other">Other</span>
+                    </li>
 
-            <div class="day">
-                <b>Friday</b>: Fish Stick Tacos
-            </div>
-        </div>
-    <p style="text-align: center; font-size: 0.8em; color: #a0aec0;">&copy; Meal Plan Generator</p>
-    </div>
+                    <li class="meal-item">
+                        <span class="day-name">Tuesday:</span> 
+                        <span>Premade Meal / Takeout</span>
+                        
+                    </li>
+
+                    <li class="meal-item">
+                        <span class="day-name">Wednesday:</span> 
+                        <span>Pulled Chicken Sandwiches</span>
+                        <span class="protein-tag" aria-label="Protein: Chicken">Chicken</span>
+                    </li>
+
+                    <li class="meal-item">
+                        <span class="day-name">Thursday:</span> 
+                        <span>Pizza</span>
+                        
+                    </li>
+
+                    <li class="meal-item">
+                        <span class="day-name">Friday:</span> 
+                        <span>Leftovers</span>
+                        
+                    </li>
+
+                </ul>
+            </article>
+        </section>
+        <footer style="text-align: center; margin-top: 40px; border-top: 1px solid #e2e8f0; padding-top: 20px;">
+            <p style="font-size: 0.9em; color: #4a5568;">&copy; 2026 Meal Plan Generator</p>
+        </footer>
+    </main>
 </body>
 </html>

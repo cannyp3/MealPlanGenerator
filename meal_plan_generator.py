@@ -223,46 +223,54 @@ def generate_plan(meals, weather, dates):
     return None
 
 def generate_html(plans, weather, dates):
-    """Generates an HTML file with the meal plan options."""
+    """Generates an accessible HTML file with the meal plan options."""
     html_content = f"""
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Weekly Meal Plan</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 20px; line-height: 1.6; background-color: #fafafa; color: #333; }}
+        body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 20px; line-height: 1.6; background-color: #fafafa; color: #1a202c; }}
         .container {{ max-width: 600px; margin: auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }}
-        h1 {{ text-align: center; color: #2c3e50; margin-bottom: 5px; }}
-        .subtitle {{ text-align: center; color: #7f8c8d; margin-bottom: 30px; font-size: 0.9em; }}
-        .weather-table {{ width: 100%; border-collapse: collapse; margin-bottom: 30px; background: #fff; border-radius: 8px; overflow: hidden; font-size: 0.9em; }}
-        .weather-table th, .weather-table td {{ padding: 10px; text-align: left; border-bottom: 1px solid #edf2f7; }}
-        .weather-table th {{ background-color: #f8fafc; color: #4a5568; font-weight: 600; }}
-        .option {{ margin-bottom: 40px; padding: 25px; border: 1px solid #edf2f7; border-radius: 12px; background-color: #fff; }}
-        .option h2 {{ margin-top: 0; color: #3498db; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; margin-bottom: 20px; }}
-        .day {{ margin-bottom: 12px; font-size: 1.1em; }}
-        .day b {{ color: #2d3748; }}
+        h1 {{ text-align: center; color: #2d3748; margin-bottom: 5px; }}
+        .subtitle {{ text-align: center; color: #4a5568; margin-bottom: 30px; font-size: 1em; }}
+        .weather-table {{ width: 100%; border-collapse: collapse; margin-bottom: 30px; background: #fff; border-radius: 8px; overflow: hidden; }}
+        .weather-table th, .weather-table td {{ padding: 12px; text-align: left; border-bottom: 1px solid #edf2f7; }}
+        .weather-table th {{ background-color: #f7fafc; color: #2d3748; font-weight: 700; border-bottom: 2px solid #e2e8f0; }}
+        .option {{ margin-bottom: 40px; padding: 25px; border: 2px solid #edf2f7; border-radius: 12px; background-color: #fff; }}
+        .option h2 {{ margin-top: 0; color: #2b6cb0; border-bottom: 2px solid #ebf8ff; padding-bottom: 10px; margin-bottom: 20px; }}
+        .meal-list {{ list-style: none; padding: 0; margin: 0; }}
+        .meal-item {{ margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px dashed #edf2f7; font-size: 1.1em; }}
+        .meal-item:last-child {{ border-bottom: none; }}
+        .day-name {{ color: #2d3748; font-weight: 700; display: inline-block; min-width: 100px; }}
+        .protein-tag {{ font-size: 0.8em; color: #4a5568; background: #edf2f7; padding: 2px 8px; border-radius: 4px; margin-left: 10px; vertical-align: middle; }}
         @media (max-width: 480px) {{
             .container {{ padding: 15px; }}
-            .day b {{ display: block; margin-bottom: 2px; }}
-            .weather-table {{ font-size: 0.8em; }}
+            .day-name {{ display: block; margin-bottom: 4px; }}
+            .protein-tag {{ margin-left: 0; }}
         }}
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Dinner Menu</h1>
-        <p class="subtitle">Generated on {datetime.date.today().strftime('%B %d, %Y')}</p>
+    <main class="container">
+        <header>
+            <h1>Dinner Menu</h1>
+            <p class="subtitle">Weekly Plan for {dates[0].strftime('%B %d')} – {dates[-1].strftime('%d, %Y')}</p>
+        </header>
         
-        <table class="weather-table">
-            <thead>
-                <tr>
-                    <th>Day</th>
-                    <th>High</th>
-                    <th>Forecast</th>
-                </tr>
-            </thead>
-            <tbody>
+        <section aria-labelledby="weather-heading">
+            <h2 id="weather-heading" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0;">Weekly Weather Forecast</h2>
+            <table class="weather-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Day</th>
+                        <th scope="col">High</th>
+                        <th scope="col">Forecast</th>
+                    </tr>
+                </thead>
+                <tbody>
 """
     for d in dates:
         date_str = d.isoformat()
@@ -271,36 +279,48 @@ def generate_html(plans, weather, dates):
         desc = get_weather_desc(w.get("code"))
         day_name = d.strftime("%A")
         html_content += f"""
-                <tr>
-                    <td>{day_name}</td>
-                    <td>{high}°F</td>
-                    <td>{desc}</td>
-                </tr>
+                    <tr>
+                        <th scope="row">{day_name}</th>
+                        <td>{high}°F</td>
+                        <td>{desc}</td>
+                    </tr>
 """
     
     html_content += """
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </section>
+
+        <section aria-label="Meal Plan Options">
 """
     if not plans:
-        html_content += "<p>Could not generate enough valid meal plans. Please check constraints or add more meal options.</p>"
+        html_content += "<p role='alert'>Could not generate enough valid meal plans. Please check constraints or add more meal options.</p>"
     else:
         for i, plan in enumerate(plans):
             html_content += f"""
-        <div class="option">
-            <h2>Option {i+1}</h2>
+            <article class="option">
+                <h2>Option {i+1}</h2>
+                <ul class="meal-list">
 """
             for day_name, date, meal in plan:
+                protein_info = f'<span class="protein-tag" aria-label="Protein: {meal.protein}">{meal.protein}</span>' if meal.protein != "None" else ""
                 html_content += f"""
-            <div class="day">
-                <b>{day_name}</b>: {meal.name}
-            </div>
+                    <li class="meal-item">
+                        <span class="day-name">{day_name}:</span> 
+                        <span>{meal.name}</span>
+                        {protein_info}
+                    </li>
 """
-            html_content += "        </div>"
+            html_content += """
+                </ul>
+            </article>"""
 
-    html_content += """
-    <p style="text-align: center; font-size: 0.8em; color: #a0aec0;">&copy; Meal Plan Generator</p>
-    </div>
+    html_content += f"""
+        </section>
+        <footer style="text-align: center; margin-top: 40px; border-top: 1px solid #e2e8f0; padding-top: 20px;">
+            <p style="font-size: 0.9em; color: #4a5568;">&copy; {datetime.date.today().year} Meal Plan Generator</p>
+        </footer>
+    </main>
 </body>
 </html>
 """

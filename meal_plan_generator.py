@@ -226,7 +226,7 @@ def generate_html(plans, weather, dates):
     """Generates an HTML file with the meal plan options."""
     html_content = f"""
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Weekly Meal Plan</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">

@@ -244,15 +244,12 @@ def generate_html(plans, weather, dates):
         .meal-list {{ list-style: none; padding: 0; margin: 0; }}
         .meal-item {{ margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px dashed #edf2f7; font-size: 1.1em; }}
         .meal-item:last-child {{ border-bottom: none; }}
-        .day-name {{ color: #2d3748; font-weight: 700; display: inline-block; min-width: 100px; }}
-        .protein-tag {{ font-size: 0.8em; color: #4a5568; background: #edf2f7; padding: 2px 8px; border-radius: 4px; margin-left: 10px; vertical-align: middle; }}
+        .day-name {{ color: #2d3748; font-weight: 700; display: inline-block; }}
         @media (max-width: 480px) {{
             .container {{ padding: 15px; }}
             .day-name {{ display: block; margin-bottom: 4px; }}
-            .protein-tag {{ margin-left: 0; }}
         }}
-    </style>
-</head>
+        </style></head>
 <body>
     <main class="container">
         <header>
@@ -303,12 +300,10 @@ def generate_html(plans, weather, dates):
                 <ul class="meal-list">
 """
             for day_name, date, meal in plan:
-                protein_info = f'<span class="protein-tag" aria-label="Protein: {meal.protein}">{meal.protein}</span>' if meal.protein != "None" else ""
                 html_content += f"""
                     <li class="meal-item">
                         <span class="day-name">{day_name}:</span> 
                         <span>{meal.name}</span>
-                        {protein_info}
                     </li>
 """
             html_content += """

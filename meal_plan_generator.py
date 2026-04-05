@@ -313,7 +313,8 @@ def generate_html(plans, weather, dates):
     html_content += f"""
         </section>
         <footer style="text-align: center; margin-top: 40px; border-top: 1px solid #e2e8f0; padding-top: 20px;">
-            <p style="font-size: 0.9em; color: #4a5568;">&copy; {datetime.date.today().year} Meal Plan Generator</p>
+            <p style="font-size: 0.9em; color: #4a5568;">Generated on: {datetime.date.today().strftime('%B %d, %Y')}</p>
+            <p style="font-size: 0.8em; color: #a0aec0; margin-top: 5px;">&copy; {datetime.date.today().year} Meal Plan Generator</p>
         </footer>
     </main>
 </body>

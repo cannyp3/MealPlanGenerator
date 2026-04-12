@@ -232,19 +232,19 @@ def generate_html(plans, weather, dates):
     <title>Weekly Meal Plan</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 20px; line-height: 1.6; background-color: #fafafa; color: #1a202c; }}
-        .container {{ max-width: 600px; margin: auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }}
-        h1 {{ text-align: center; color: #2d3748; margin-bottom: 5px; }}
-        .subtitle {{ text-align: center; color: #4a5568; margin-bottom: 30px; font-size: 1em; }}
-        .weather-table {{ width: 100%; border-collapse: collapse; margin-bottom: 30px; background: #fff; border-radius: 8px; overflow: hidden; }}
-        .weather-table th, .weather-table td {{ padding: 12px; text-align: left; border-bottom: 1px solid #edf2f7; }}
-        .weather-table th {{ background-color: #f7fafc; color: #2d3748; font-weight: 700; border-bottom: 2px solid #e2e8f0; }}
-        .option {{ margin-bottom: 40px; padding: 25px; border: 2px solid #edf2f7; border-radius: 12px; background-color: #fff; }}
-        .option h2 {{ margin-top: 0; color: #2b6cb0; border-bottom: 2px solid #ebf8ff; padding-bottom: 10px; margin-bottom: 20px; }}
+        body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 20px; line-height: 1.6; background-color: #000000; color: #ffffff; }}
+        .container {{ max-width: 600px; margin: auto; background: #121212; padding: 30px; border-radius: 12px; border: 1px solid #333333; box-shadow: 0 4px 20px rgba(0,0,0,0.5); }}
+        h1 {{ text-align: center; color: #ffffff; margin-bottom: 5px; }}
+        .subtitle {{ text-align: center; color: #b0b0b0; margin-bottom: 30px; font-size: 1em; }}
+        .weather-table {{ width: 100%; border-collapse: collapse; margin-bottom: 30px; background: #121212; border-radius: 8px; overflow: hidden; border: 1px solid #333333; }}
+        .weather-table th, .weather-table td {{ padding: 12px; text-align: left; border-bottom: 1px solid #333333; }}
+        .weather-table th {{ background-color: #1a1a1a; color: #ffffff; font-weight: 700; border-bottom: 2px solid #333333; }}
+        .option {{ margin-bottom: 40px; padding: 25px; border: 1px solid #333333; border-radius: 12px; background-color: #1a1a1a; }}
+        .option h2 {{ margin-top: 0; color: #ffffff; border-bottom: 1px solid #333333; padding-bottom: 10px; margin-bottom: 20px; }}
         .meal-list {{ list-style: none; padding: 0; margin: 0; }}
-        .meal-item {{ margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px dashed #edf2f7; font-size: 1.1em; }}
+        .meal-item {{ margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px dashed #333333; font-size: 1.1em; }}
         .meal-item:last-child {{ border-bottom: none; }}
-        .day-name {{ color: #2d3748; font-weight: 700; display: inline-block; }}
+        .day-name {{ color: #ffffff; font-weight: 700; display: inline-block; }}
         @media (max-width: 480px) {{
             .container {{ padding: 15px; }}
             .day-name {{ display: block; margin-bottom: 4px; }}
@@ -312,9 +312,9 @@ def generate_html(plans, weather, dates):
 
     html_content += f"""
         </section>
-        <footer style="text-align: center; margin-top: 40px; border-top: 1px solid #e2e8f0; padding-top: 20px;">
-            <p style="font-size: 0.9em; color: #4a5568;">Generated on: {datetime.date.today().strftime('%B %d, %Y')}</p>
-            <p style="font-size: 0.8em; color: #a0aec0; margin-top: 5px;">&copy; {datetime.date.today().year} Meal Plan Generator</p>
+        <footer style="text-align: center; margin-top: 40px; border-top: 1px solid #333333; padding-top: 20px;">
+            <p style="font-size: 0.9em; color: #b0b0b0;">Generated on: {datetime.date.today().strftime('%B %d, %Y')}</p>
+            <p style="font-size: 0.8em; color: #b0b0b0; margin-top: 5px;">&copy; {datetime.date.today().year} Meal Plan Generator</p>
         </footer>
     </main>
 </body>
